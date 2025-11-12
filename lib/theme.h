@@ -10,6 +10,7 @@ class Theme: public QObject{
   QML_ELEMENT
 
   Q_PROPERTY(float radius READ radius CONSTANT)
+  Q_PROPERTY(float spacing READ spacing CONSTANT)
   Q_PROPERTY(QColor background READ background CONSTANT)
   Q_PROPERTY(QColor foreground READ foreground CONSTANT)
   Q_PROPERTY(QColor card READ card CONSTANT)
@@ -44,6 +45,7 @@ class Theme: public QObject{
 
 public:
   float m_radius;
+  float m_spacing;
   QColor m_background;
   QColor m_foreground;
   QColor m_card;
@@ -79,6 +81,7 @@ public:
   explicit Theme(QObject *parent = nullptr);
 
   float radius() const;
+  float spacing() const;
   QColor background() const;
   QColor foreground() const;
   QColor card() const;

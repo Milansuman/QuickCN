@@ -10,5 +10,5 @@ class Util: public QObject{
   QML_ELEMENT
 public:
   explicit Util(QObject *parent = nullptr);
-  Q_INVOKABLE QColor OkLCH(float L, float a, float b) const;
+  Q_INVOKABLE QColor OkLCH(float L, float C, float H) const;
 };

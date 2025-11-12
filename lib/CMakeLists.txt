@@ -11,6 +11,7 @@ qt_add_qml_module(${PROJECT_NAME}lib
     theme.cpp
     dark-theme.h
     dark-theme.cpp
+    color.h
 )
 
 target_link_libraries(${PROJECT_NAME}lib PRIVATE Qt6::Core Qt6::Quick)

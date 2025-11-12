@@ -3,6 +3,7 @@
 
 Theme::Theme(QObject *parent) : QObject(parent),
   m_radius(10.0f),
+  m_spacing(),
   m_background(Util().OkLCH(1, 0, 0)),
   m_foreground(Util().OkLCH(0.145, 0, 0)),
   m_card(Util().OkLCH(1, 0, 0)),
@@ -39,6 +40,10 @@ Theme::Theme(QObject *parent) : QObject(parent),
 
 float Theme::radius() const {
   return m_radius;
+}
+
+float Theme::spacing() const{
+  return m_spacing;
 }
 
 QColor Theme::background() const {
