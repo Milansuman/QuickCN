@@ -3,7 +3,7 @@
 
 Theme::Theme(QObject *parent) : QObject(parent),
   m_radius(10.0f),
-  m_spacing(),
+  m_spacing(4.0f),
   m_background(Util().OkLCH(1, 0, 0)),
   m_foreground(Util().OkLCH(0.145, 0, 0)),
   m_card(Util().OkLCH(1, 0, 0)),
@@ -168,4 +168,146 @@ QColor Theme::sidebarBorder() const {
 
 QColor Theme::sidebarRing() const {
   return m_sidebarRing;
+}
+
+QJsonObject Theme::toJSON() const {
+  QJsonObject json;
+
+  json["radius"] = m_radius;
+  json["spacing"] = m_spacing;
+  json["background"] = m_background.name();
+  json["foreground"] = m_foreground.name();
+  json["card"] = m_card.name();
+  json["cardForeground"] = m_cardForeground.name();
+  json["popover"] = m_popover.name();
+  json["popoverForeground"] = m_popoverForeground.name();
+  json["primary"] = m_primary.name();
+  json["primaryForeground"] = m_primaryForeground.name();
+  json["secondary"] = m_secondary.name();
+  json["secondaryForeground"] = m_secondaryForeground.name();
+  json["muted"] = m_muted.name();
+  json["mutedForeground"] = m_mutedForeground.name();
+  json["accent"] = m_accent.name();
+  json["accentForeground"] = m_accentForeground.name();
+  json["destructive"] = m_destructive.name();
+  json["border"] = m_border.name();
+  json["input"] = m_input.name();
+  json["ring"] = m_ring.name();
+  json["chart1"] = m_chart1.name();
+  json["chart2"] = m_chart2.name();
+  json["chart3"] = m_chart3.name();
+  json["chart4"] = m_chart4.name();
+  json["chart5"] = m_chart5.name();
+  json["sidebar"] = m_sidebar.name();
+  json["sidebarForeground"] = m_sidebarForeground.name();
+  json["sidebarPrimary"] = m_sidebarPrimary.name();
+  json["sidebarPrimaryForeground"] = m_sidebarPrimaryForeground.name();
+  json["sidebarAccent"] = m_sidebarAccent.name();
+  json["sidebarAccentForeground"] = m_sidebarAccentForeground.name();
+  json["sidebarBorder"] = m_sidebarBorder.name();
+  json["sidebarRing"] = m_sidebarRing.name();
+
+  return json;
+}
+
+void Theme::fromJSON(const QJsonObject &json) {
+  if (json.contains("radius") && json["radius"].isDouble()) {
+    m_radius = json["radius"].toDouble();
+  }
+  if (json.contains("spacing") && json["spacing"].isDouble()) {
+    m_spacing = json["spacing"].toDouble();
+  }
+  if (json.contains("background") && json["background"].isString()) {
+    m_background = QColor(json["background"].toString());
+  }
+  if (json.contains("foreground") && json["foreground"].isString()) {
+    m_foreground = QColor(json["foreground"].toString());
+  }
+  if (json.contains("card") && json["card"].isString()) {
+    m_card = QColor(json["card"].toString());
+  }
+  if (json.contains("cardForeground") && json["cardForeground"].isString()) {
+    m_cardForeground = QColor(json["cardForeground"].toString());
+  }
+  if (json.contains("popover") && json["popover"].isString()) {
+    m_popover = QColor(json["popover"].toString());
+  }
+  if (json.contains("popoverForeground") && json["popoverForeground"].isString()) {
+    m_popoverForeground = QColor(json["popoverForeground"].toString());
+  }
+  if (json.contains("primary") && json["primary"].isString()) {
+    m_primary = QColor(json["primary"].toString());
+  }
+  if (json.contains("primaryForeground") && json["primaryForeground"].isString()) {
+    m_primaryForeground = QColor(json["primaryForeground"].toString());
+  }
+  if (json.contains("secondary") && json["secondary"].isString()) {
+    m_secondary = QColor(json["secondary"].toString());
+  }
+  if (json.contains("secondaryForeground") && json["secondaryForeground"].isString()) {
+    m_secondaryForeground = QColor(json["secondaryForeground"].toString());
+  }
+  if (json.contains("muted") && json["muted"].isString()) {
+    m_muted = QColor(json["muted"].toString());
+  }
+  if (json.contains("mutedForeground") && json["mutedForeground"].isString()) {
+    m_mutedForeground = QColor(json["mutedForeground"].toString());
+  }
+  if (json.contains("accent") && json["accent"].isString()) {
+    m_accent = QColor(json["accent"].toString());
+  }
+  if (json.contains("accentForeground") && json["accentForeground"].isString()) {
+    m_accentForeground = QColor(json["accentForeground"].toString());
+  }
+  if (json.contains("destructive") && json["destructive"].isString()) {
+    m_destructive = QColor(json["destructive"].toString());
+  }
+  if (json.contains("border") && json["border"].isString()) {
+    m_border = QColor(json["border"].toString());
+  }
+  if (json.contains("input") && json["input"].isString()) {
+    m_input = QColor(json["input"].toString());
+  }
+  if (json.contains("ring") && json["ring"].isString()) {
+    m_ring = QColor(json["ring"].toString());
+  }
+  if (json.contains("chart1") && json["chart1"].isString()) {
+    m_chart1 = QColor(json["chart1"].toString());
+  }
+  if (json.contains("chart2") && json["chart2"].isString()) {
+    m_chart2 = QColor(json["chart2"].toString());
+  }
+  if (json.contains("chart3") && json["chart3"].isString()) {
+    m_chart3 = QColor(json["chart3"].toString());
+  }
+  if (json.contains("chart4") && json["chart4"].isString()) {
+    m_chart4 = QColor(json["chart4"].toString());
+  }
+  if (json.contains("chart5") && json["chart5"].isString()) {
+    m_chart5 = QColor(json["chart5"].toString());
+  }
+  if (json.contains("sidebar") && json["sidebar"].isString()) {
+    m_sidebar = QColor(json["sidebar"].toString());
+  }
+  if (json.contains("sidebarForeground") && json["sidebarForeground"].isString()) {
+    m_sidebarForeground = QColor(json["sidebarForeground"].toString());
+  }
+  if (json.contains("sidebarPrimary") && json["sidebarPrimary"].isString()) {
+    m_sidebarPrimary = QColor(json["sidebarPrimary"].toString());
+  }
+  if (json.contains("sidebarPrimaryForeground") && json["sidebarPrimaryForeground"].isString()) {
+    m_sidebarPrimaryForeground = QColor(json["sidebarPrimaryForeground"].toString());
+  }
+  if (json.contains("sidebarAccent") && json["sidebarAccent"].isString()) {
+    m_sidebarAccent = QColor(json["sidebarAccent"].toString());
+  }
+  if (json.contains("sidebarAccentForeground") && json["sidebarAccentForeground"].isString()) {
+    m_sidebarAccentForeground = QColor(json["sidebarAccentForeground"].toString());
+  }
+  if (json.contains("sidebarBorder") && json["sidebarBorder"].isString()) {
+    m_sidebarBorder = QColor(json["sidebarBorder"].toString());
+  }
+  if (json.contains("sidebarRing") && json["sidebarRing"].isString()) {
+    m_sidebarRing = QColor(json["sidebarRing"].toString());
+  }
 }

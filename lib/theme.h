@@ -3,10 +3,10 @@
 #include <QObject>
 #include <QtQml>
 #include <QColor>
+#include <QJsonObject>
 
 class Theme: public QObject{
   Q_OBJECT
-  QML_SINGLETON
   QML_ELEMENT
 
   Q_PROPERTY(float radius READ radius CONSTANT)
@@ -44,6 +44,7 @@ class Theme: public QObject{
   Q_PROPERTY(QColor sidebarRing READ sidebarRing CONSTANT)
 
 public:
+  //public variables so that other themes can subclass and directly modify the theme.
   float m_radius;
   float m_spacing;
   QColor m_background;
@@ -113,4 +114,6 @@ public:
   QColor sidebarAccentForeground() const;
   QColor sidebarBorder() const;
   QColor sidebarRing() const;
+  Q_INVOKABLE QJsonObject toJSON() const;
+  Q_INVOKABLE void fromJSON(const QJsonObject &json);
 };
