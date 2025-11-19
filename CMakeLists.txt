@@ -37,7 +37,7 @@ target_link_libraries(${EXECUTABLE_NAME}
   PRIVATE Qt6::Core
   PRIVATE Qt6::Quick
   PRIVATE ${PROJECT_NAME}lib
-  PRIVATE ${PROJECT_NAME}components
+  PRIVATE ${QUICKCN_COMPONENT_TARGETS}
 )
 
 include(GNUInstallDirs)
